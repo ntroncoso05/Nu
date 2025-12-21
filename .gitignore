@@ -4,8 +4,8 @@
 
 # Directories
 /.vs/Nu
-/bin
-/bin-int
+bin
+bin-int
 
 # Files
 *.user
