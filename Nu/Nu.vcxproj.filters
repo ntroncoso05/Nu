@@ -4,6 +4,9 @@
     <Filter Include="Nu">
       <UniqueIdentifier>{C8745900-B400-880B-1DAF-880B095A880B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Nu\Events">
+      <UniqueIdentifier>{ACEF9235-185A-47AC-6198-F851CD412501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nu.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Nu\EntryPoint.h">
       <Filter>Nu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Events\ApplicationEvent.h">
+      <Filter>Nu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Events\Event.h">
+      <Filter>Nu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Events\KeyEvent.h">
+      <Filter>Nu\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Events\MouseEvent.h">
+      <Filter>Nu\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Log.h">
       <Filter>Nu</Filter>

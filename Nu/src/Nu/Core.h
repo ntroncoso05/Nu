@@ -9,3 +9,5 @@
 #else
 	#error Nu only supports Windows!
 #endif // NU_PLATFORM_WINDOWS
+
+#define BIT(x) (1 << x) // 1 shifted by x places
