@@ -2,9 +2,6 @@
 
 #include "Nu/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Nu {
 
 	// Events in Nu are currently blocking, meaning when an event occurs it

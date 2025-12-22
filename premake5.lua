@@ -18,6 +18,9 @@ project "Nu"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "nupch.h"
+	pchsource "Nu/src/nupch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

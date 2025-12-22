@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Nu {
 
 	class NU_API MouseMovedEvent : public Event

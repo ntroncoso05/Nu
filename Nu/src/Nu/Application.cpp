@@ -1,3 +1,4 @@
+#include "nupch.h"
 #include "Application.h"
 
 #include "Nu/Events/ApplicationEvent.h"
