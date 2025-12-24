@@ -4,10 +4,13 @@
 #include "Nu/Events/ApplicationEvent.h"
 #include "Nu/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Nu {
 
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create()); // explicit constructor need std::unique_ptr<Window>()
 	}
 
 	Application::~Application()
@@ -16,18 +19,12 @@ namespace Nu {
 
 	void Application::run()
 	{
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication))
+		while (m_Running)
 		{
-			NU_TRACE(e);
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
 		}
-
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			NU_TRACE(e);
-		}
-
-		while (true);
 	}
 
 }

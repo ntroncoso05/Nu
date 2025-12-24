@@ -10,6 +10,12 @@ workspace "Nu"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Nu/vendor/GLFW/include"
+
+include "Nu/vendor/GLFW"
+
 project "Nu"
 	location "Nu"
 	kind "SharedLib"
@@ -30,7 +36,14 @@ project "Nu"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -63,7 +76,7 @@ project "Nu"
 
 	filter "configurations:Debug"
 		buildoptions "/utf-8"
-
+		
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"

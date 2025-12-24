@@ -1,5 +1,7 @@
 #pragma once
 
+#include "nupch.h"
+
 #include "Nu/Core.h"
 
 namespace Nu {

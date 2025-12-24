@@ -34,6 +34,10 @@
     <ClInclude Include="src\Nu\Log.h">
       <Filter>Nu</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Window.h">
+      <Filter>Nu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowsWindow.h" />
     <ClInclude Include="src\nupch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +47,7 @@
     <ClCompile Include="src\Nu\Log.cpp">
       <Filter>Nu</Filter>
     </ClCompile>
+    <ClCompile Include="src\WindowsWindow.cpp" />
     <ClCompile Include="src\nupch.cpp" />
   </ItemGroup>
 </Project>
