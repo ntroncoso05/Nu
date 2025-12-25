@@ -3,7 +3,7 @@
 
 //#include "Nu/Log.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Nu {
 
@@ -34,8 +34,7 @@ namespace Nu {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		NU_CORE_TRACE("{0}", e);
-
+		//NU_CORE_TRACE("{0}", e);
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);

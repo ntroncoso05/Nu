@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Nu/vendor/GLFW/include"
+IncludeDir["Glad"] = "Nu/vendor/Glad/include"
 
 include "Nu/vendor/GLFW"
+include "Nu/vendor/Glad"
 
 project "Nu"
 	location "Nu"
@@ -37,12 +39,14 @@ project "Nu"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Nu"
 		defines
 		{
 			"NU_PLATFORM_WINDOWS",
-			"NU_BUILD_DLL"
+			"NU_BUILD_DLL",
+			"GLFW_INCLUDE_NONE" -- will not include any OPENGL header with GLFW
 		}
 
 		postbuildcommands
