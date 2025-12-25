@@ -84,7 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MDd /utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -111,6 +111,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -138,6 +139,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -161,15 +163,19 @@
     <ClInclude Include="src\Nu\Events\Event.h" />
     <ClInclude Include="src\Nu\Events\KeyEvent.h" />
     <ClInclude Include="src\Nu\Events\MouseEvent.h" />
+    <ClInclude Include="src\Nu\Layer.h" />
+    <ClInclude Include="src\Nu\LayerStack.h" />
     <ClInclude Include="src\Nu\Log.h" />
     <ClInclude Include="src\Nu\Window.h" />
-    <ClInclude Include="src\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\nupch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nu\Application.cpp" />
+    <ClCompile Include="src\Nu\Layer.cpp" />
+    <ClCompile Include="src\Nu\LayerStack.cpp" />
     <ClCompile Include="src\Nu\Log.cpp" />
-    <ClCompile Include="src\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\nupch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

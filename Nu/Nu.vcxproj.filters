@@ -7,6 +7,12 @@
     <Filter Include="Nu\Events">
       <UniqueIdentifier>{ACEF9235-185A-47AC-6198-F851CD412501}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Nu.h" />
@@ -31,23 +37,39 @@
     <ClInclude Include="src\Nu\Events\MouseEvent.h">
       <Filter>Nu\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Layer.h">
+      <Filter>Nu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\LayerStack.h">
+      <Filter>Nu</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Log.h">
       <Filter>Nu</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Window.h">
       <Filter>Nu</Filter>
     </ClInclude>
-    <ClInclude Include="src\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\nupch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Nu\Application.cpp">
       <Filter>Nu</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nu\Layer.cpp">
+      <Filter>Nu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\LayerStack.cpp">
+      <Filter>Nu</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nu\Log.cpp">
       <Filter>Nu</Filter>
     </ClCompile>
-    <ClCompile Include="src\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\nupch.cpp" />
   </ItemGroup>
 </Project>
