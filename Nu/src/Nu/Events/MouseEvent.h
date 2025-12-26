@@ -10,8 +10,8 @@ namespace Nu {
 		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
 
-		inline float getX() const { return m_MouseX; }
-		inline float getY() const { return m_MouseY; }
+		inline float GetX() const { return m_MouseX; }
+		inline float GetY() const { return m_MouseY; }
 
 		std::string ToString() const override
 		{
@@ -32,13 +32,13 @@ namespace Nu {
 		MouseScrolledEvent(float x, float y)
 			: m_XOffset(x), m_YOffset(y) {}
 
-		inline float getXOffset() const { return m_XOffset; }
-		inline float getYOffset() const { return m_YOffset; }
+		inline float GetXOffset() const { return m_XOffset; }
+		inline float GetYOffset() const { return m_YOffset; }
 
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseScrolledEvent: " << getXOffset() << ", " << getYOffset();
+			ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
 			return ss.str();
 		}
 
