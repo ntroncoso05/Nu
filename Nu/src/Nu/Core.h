@@ -10,6 +10,10 @@
 	#error Nu only supports Windows!
 #endif // NU_PLATFORM_WINDOWS
 
+#ifdef NU_DEBUG
+	#define NU_ENABLE_ASSERTS
+#endif
+
 #ifdef NU_ENABLE_ASSERTS
 	#define NU_ASSERT(x, ...) { if(!(x)) { NU_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define NU_CORE_ASSERT(x, ...) { if(!(x)) { NU_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
