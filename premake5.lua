@@ -1,6 +1,6 @@
 workspace "Nu"
 	architecture "x64"
-	startproject "Sandbox"
+	startproject "Sandbox" --Not Working
 
 	configurations
 	{
@@ -71,7 +71,7 @@ project "Nu"
 		{
 			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
-		-- We now linking runtime library dynamically; defined NU_ENABLE_ASSERTS if NU_DEBUG is on.
+		
 	filter "configurations:Debug"
 		defines "NU_DEBUG"
 		runtime "Debug"

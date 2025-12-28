@@ -7,7 +7,6 @@
 #include "Events/Event.h"
 #include "Nu/Events/ApplicationEvent.h"
 
-
 namespace Nu {
 
 	class NU_API Application
