@@ -49,6 +49,9 @@
     <ClInclude Include="src\Nu\Input.h">
       <Filter>Nu</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\KeyCodes.h">
+      <Filter>Nu</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Layer.h">
       <Filter>Nu</Filter>
     </ClInclude>
@@ -56,6 +59,9 @@
       <Filter>Nu</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Log.h">
+      <Filter>Nu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\MouseButtonCodes.h">
       <Filter>Nu</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Window.h">

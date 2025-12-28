@@ -10,12 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		NU_INFO("ExampleLayer::Update");
+		if (Nu::Input::IsKeyPressed(NU_KEY_TAB))
+			NU_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Nu::Event& event) override
 	{
-		NU_TRACE("{0}", event);
+		if (event.GetEventType() == Nu::EventType::KeyPressed)
+		{
+			Nu::KeyPressedEvent& e = (Nu::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == NU_KEY_TAB)
+				NU_TRACE("Tab key is pressed (event)!");
+			NU_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
