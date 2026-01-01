@@ -4,8 +4,10 @@
 
 #include "Window.h"
 #include "Nu/LayerStack.h"
-#include "Events/Event.h"
+#include "Nu/Events/Event.h" // Nu/ not needed
 #include "Nu/Events/ApplicationEvent.h"
+
+#include <Nu/ImGui/ImGuiLayer.h>
 
 namespace Nu {
 
@@ -29,6 +31,7 @@ namespace Nu {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

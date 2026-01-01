@@ -1,5 +1,7 @@
 #include <Nu.h>
 
+#include "ImGui/imgui.h"
+
 class ExampleLayer : public Nu::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
 	{
 		if (Nu::Input::IsKeyPressed(NU_KEY_TAB))
 			NU_TRACE("Tab key is pressed (poll)!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World!");
+		ImGui::End();
 	}
 
 	void OnEvent(Nu::Event& event) override
@@ -32,7 +41,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Nu::ImGuiLayer());
+		//PushOverlay(new Nu::ImGuiLayer());
 	}
 
 	~Sandbox()
