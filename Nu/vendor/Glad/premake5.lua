@@ -1,7 +1,7 @@
 project "Glad"
 	kind "StaticLib"
 	language "C"
-	--staticruntime "off"
+	staticruntime "on"
 	--warnings "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -21,7 +21,6 @@ project "Glad"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
 
 		--[[files
 		{
@@ -42,25 +41,22 @@ project "Glad"
 			"_GLFW_WIN32",
 			"_CRT_SECURE_NO_WARNINGS"
 		} ]]
-		
-	filter { "system:windows", "configurations:Release" }
-		buildoptions "/MT"
 
-	--[[filter "configurations:Debug"
+	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
 
-	filter { "system:windows", "configurations:Debug-AS" }	
+	--[[filter { "system:windows", "configurations:Debug-AS" }	
 		runtime "Debug"
 		symbols "on"
 		sanitize { "Address" }
-		flags { "NoRuntimeChecks", "NoIncrementalLink" }
+		flags { "NoRuntimeChecks", "NoIncrementalLink" }]]
 
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "speed"
 
-    filter "configurations:Dist"
+    --[[filter "configurations:Dist"
 		runtime "Release"
 		optimize "speed"
         symbols "off"

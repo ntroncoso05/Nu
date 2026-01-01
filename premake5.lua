@@ -24,9 +24,10 @@ include "Nu/vendor/ImGui"
 
 project "Nu"
 	location "Nu"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -40,6 +41,11 @@ project "Nu"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -61,7 +67,6 @@ project "Nu"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -70,26 +75,21 @@ project "Nu"
 			"NU_BUILD_DLL",
 			"GLFW_INCLUDE_NONE" -- will not include any OPENGL header with GLFW
 		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
 		
 	filter "configurations:Debug"
 		defines "NU_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 		
 	filter "configurations:Release"
 		defines "NU_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 		
 	filter "configurations:Dist"
 		defines "NU_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Debug"
 		buildoptions "/utf-8"
@@ -98,7 +98,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -123,7 +124,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -134,17 +134,17 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "NU_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 		
 	filter "configurations:Release"
 		defines "NU_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 		
 	filter "configurations:Dist"
 		defines "NU_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Debug"
 		buildoptions "/utf-8"
