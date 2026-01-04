@@ -160,6 +160,7 @@
     <ClInclude Include="src\Nu\Log.h" />
     <ClInclude Include="src\Nu\MouseButtonCodes.h" />
     <ClInclude Include="src\Nu\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Nu\Renderer\Shader.h" />
     <ClInclude Include="src\Nu\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -592,6 +593,7 @@
     <ClCompile Include="src\Nu\Layer.cpp" />
     <ClCompile Include="src\Nu\LayerStack.cpp" />
     <ClCompile Include="src\Nu\Log.cpp" />
+    <ClCompile Include="src\Nu\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
