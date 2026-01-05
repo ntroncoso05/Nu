@@ -10,6 +10,7 @@
 #include <Nu/ImGui/ImGuiLayer.h>
 
 #include "Nu/Renderer/Shader.h"
+#include "Nu/Renderer/Buffer.h"
 
 namespace Nu {
 
@@ -37,8 +38,10 @@ namespace Nu {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
 		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};
