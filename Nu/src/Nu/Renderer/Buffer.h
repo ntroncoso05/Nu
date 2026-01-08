@@ -100,7 +100,7 @@ namespace Nu {
 		uint32_t m_Stride = 0; // the size of each vertex (complete vertex), the size of all of the attrbutes, the size of all of those together
 	};
 
-	// Pure virtual interfaces
+	// Pure virtual interfaces (Renderer API agnostic)
 	class VertexBuffer
 	{
 	public:
