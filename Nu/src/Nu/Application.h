@@ -4,7 +4,7 @@
 
 #include "Window.h"
 #include "Nu/LayerStack.h"
-#include "Nu/Events/Event.h" // Nu/ not needed
+#include "Nu/Events/Event.h"
 #include "Nu/Events/ApplicationEvent.h"
 
 #include <Nu/ImGui/ImGuiLayer.h>

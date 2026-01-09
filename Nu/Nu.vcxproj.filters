@@ -99,7 +99,13 @@
     <ClInclude Include="src\Nu\Renderer\GraphicsContext.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\RenderCommand.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Renderer.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\RendererAPI.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Shader.h">
@@ -115,6 +121,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -1409,7 +1418,13 @@
     <ClCompile Include="src\Nu\Renderer\Buffer.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nu\Renderer\RenderCommand.cpp">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Renderer.cpp">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Renderer\RendererAPI.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Shader.cpp">
@@ -1422,6 +1437,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">

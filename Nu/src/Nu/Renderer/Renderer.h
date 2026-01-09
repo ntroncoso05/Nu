@@ -1,17 +1,17 @@
 #pragma once
 
-namespace Nu {
+#include "RenderCommand.h"
 
-	enum class RendererAPI
-	{
-		None = 0, OpenGL = 1
-	};
+namespace Nu {
 
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetApi() /*const*/ { return s_RendererAPI; }
-	private:
-		static RendererAPI s_RendererAPI;
+		static void BeginScene();
+		static void EndScene();
+
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	};
 }
