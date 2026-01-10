@@ -13,6 +13,8 @@
 #include "Nu/Renderer/Buffer.h"
 #include "Nu/Renderer/VertexArray.h"
 
+#include "Nu/Renderer/OrthographicCamera.h"
+
 namespace Nu {
 
 	class NU_API Application
@@ -44,6 +46,8 @@ namespace Nu {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
