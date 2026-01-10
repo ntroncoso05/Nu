@@ -12,6 +12,17 @@
 
 #include "Nu/ImGui/ImGuiLayer.h"
 
+// ---Renderer-------------------------
+#include "Nu/Renderer/Renderer.h"
+#include "Nu/Renderer/RenderCommand.h"
+
+#include "Nu/Renderer/Buffer.h"
+#include "Nu/Renderer/Shader.h"
+#include "Nu/Renderer/VertexArray.h"
+
+#include "Nu/Renderer/OrthographicCamera.h"
+// ------------------------------------
+
 // ---Entry Point----------------------
 #include "Nu/EntryPoint.h"
 // ------------------------------------
