@@ -7,6 +7,9 @@
     <Filter Include="src\Nu">
       <UniqueIdentifier>{7F4A661C-6BEC-90F2-54A7-A44640E81743}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nu\Core">
+      <UniqueIdentifier>{37D69C95-A38B-158B-2C80-0F6298340C8F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Nu\Events">
       <UniqueIdentifier>{83514D75-EF11-C9AB-B84C-122924CC0D88}</UniqueIdentifier>
     </Filter>
@@ -56,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="src\Nu\Core.h">
       <Filter>src\Nu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\Timestep.h">
+      <Filter>src\Nu\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\EntryPoint.h">
       <Filter>src\Nu</Filter>

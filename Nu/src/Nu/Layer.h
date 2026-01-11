@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Nu/Core.h"
+#include "Nu/Core/Timestep.h"
 #include "Nu/Events/Event.h"
 
 namespace Nu {
@@ -13,7 +14,7 @@ namespace Nu {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

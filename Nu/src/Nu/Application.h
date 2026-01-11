@@ -7,6 +7,8 @@
 #include "Nu/Events/Event.h"
 #include "Nu/Events/ApplicationEvent.h"
 
+#include "Nu/Core/Timestep.h"
+
 #include <Nu/ImGui/ImGuiLayer.h>
 
 namespace Nu {
@@ -29,11 +31,12 @@ namespace Nu {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
