@@ -41,18 +41,19 @@ public:
 		// Square Vertex Array
 		m_SquareVA.reset(Nu::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		// Square Vertex Buffer
 		Nu::Ref<Nu::VertexBuffer> squareVB;
 		squareVB.reset(Nu::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ Nu::ShaderDataType::Float3, "a_Position" }
+			{ Nu::ShaderDataType::Float3, "a_Position" }, // attributes
+			{ Nu::ShaderDataType::Float2, "a_TexCoord" }
 		});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -134,6 +135,46 @@ public:
 		)";
 
 		m_FlatColorShader.reset(Nu::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+			
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0f);
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color; // output color
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture; // sampler2D it's basically an int (a texture slot to sample from)
+			
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Nu::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Nu::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Nu::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Nu::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Nu::Timestep ts) override
@@ -178,8 +219,11 @@ public:
 
 		}
 
+		m_Texture->Bind();
+		Nu::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
 		// Triangle
-		Nu::Renderer::Submit(m_Shader, m_VertexArray);
+		//Nu::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Nu::Renderer::EndScene();
 		
@@ -199,8 +243,10 @@ private:
 	Nu::Ref<Nu::Shader> m_Shader;
 	Nu::Ref<Nu::VertexArray> m_VertexArray;
 
-	Nu::Ref<Nu::Shader> m_FlatColorShader;
+	Nu::Ref<Nu::Shader> m_FlatColorShader, m_TextureShader;
 	Nu::Ref<Nu::VertexArray> m_SquareVA;
+
+	Nu::Ref<Nu::Texture2D> m_Texture;
 
 	Nu::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

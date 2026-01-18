@@ -17,10 +17,14 @@ IncludeDir["GLFW"] = "Nu/vendor/GLFW/include"
 IncludeDir["Glad"] = "Nu/vendor/Glad/include"
 IncludeDir["ImGui"] = "Nu/vendor/imgui"
 IncludeDir["glm"] = "Nu/vendor/glm"
+IncludeDir["stb_image"] = "Nu/vendor/stb_image"
 
-include "Nu/vendor/GLFW"
-include "Nu/vendor/Glad"
-include "Nu/vendor/ImGui"
+group "Dependencies"
+	include "Nu/vendor/GLFW"
+	include "Nu/vendor/Glad"
+	include "Nu/vendor/ImGui"
+
+group ""
 
 project "Nu"
 	location "Nu"
@@ -39,6 +43,8 @@ project "Nu"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
@@ -55,7 +61,8 @@ project "Nu"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

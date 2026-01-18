@@ -20,6 +20,7 @@
 
 #include "Nu/Renderer/Buffer.h"
 #include "Nu/Renderer/Shader.h"
+#include "Nu/Renderer/Texture.h"
 #include "Nu/Renderer/VertexArray.h"
 
 #include "Nu/Renderer/OrthographicCamera.h"
