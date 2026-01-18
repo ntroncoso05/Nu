@@ -17,7 +17,7 @@ namespace Nu {
 			s_RendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) // static wrapper for the actual implementation
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray) // static wrapper for the actual implementation
 		{
 			s_RendererAPI->DrawIndexed(vertexArray);
 		}

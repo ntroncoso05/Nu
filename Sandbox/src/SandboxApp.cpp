@@ -23,7 +23,7 @@ public:
 		};
 
 		// Vertex Buffer
-		std::shared_ptr<Nu::VertexBuffer> vertexBuffer;
+		Nu::Ref<Nu::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Nu::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Nu::BufferLayout layout = {
 			{ Nu::ShaderDataType::Float3, "a_Position" },
@@ -34,7 +34,7 @@ public:
 
 		// Index Buffer
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Nu::IndexBuffer> indexBuffer;
+		Nu::Ref<Nu::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Nu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -49,7 +49,7 @@ public:
 		};
 
 		// Square Vertex Buffer
-		std::shared_ptr<Nu::VertexBuffer> squareVB;
+		Nu::Ref<Nu::VertexBuffer> squareVB;
 		squareVB.reset(Nu::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Nu::ShaderDataType::Float3, "a_Position" }
@@ -58,7 +58,7 @@ public:
 
 		// Square Index Buffer
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Nu::IndexBuffer> squareIB;
+		Nu::Ref<Nu::IndexBuffer> squareIB;
 		squareIB.reset(Nu::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -196,11 +196,11 @@ public:
 	{
 	}
 private:
-	std::shared_ptr<Nu::Shader> m_Shader;
-	std::shared_ptr<Nu::VertexArray> m_VertexArray;
+	Nu::Ref<Nu::Shader> m_Shader;
+	Nu::Ref<Nu::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Nu::Shader> m_FlatColorShader;
-	std::shared_ptr<Nu::VertexArray> m_SquareVA;
+	Nu::Ref<Nu::Shader> m_FlatColorShader;
+	Nu::Ref<Nu::VertexArray> m_SquareVA;
 
 	Nu::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

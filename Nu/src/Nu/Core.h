@@ -1,9 +1,11 @@
 #pragma once
 
+#include <memory>
+
 #ifdef NU_PLATFORM_WINDOWS
 	#if NU_DYNAMIC_LINK
 		#ifdef NU_BUILD_DLL
-			#define NU_API __declspec(dllexport)
+			#define NU_API __declspec(dllexport) //__NU_API__ maybe?
 		#else
 			#define NU_API __declspec(dllimport)
 		#endif // NU_BUILD_DLL
@@ -29,3 +31,13 @@
 #define BIT(x) (1 << x) // 1 shifted by x places
 
 #define NU_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Nu {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}
