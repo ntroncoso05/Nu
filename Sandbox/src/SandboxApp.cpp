@@ -100,7 +100,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Nu::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Nu::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -134,15 +134,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Nu::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Nu::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Nu::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Nu::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_PlayerTexture = Nu::Texture2D::Create("assets/textures/player.png");
 
-		std::dynamic_pointer_cast<Nu::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Nu::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Nu::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Nu::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Nu::Timestep ts) override
@@ -187,16 +187,17 @@ public:
 
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Nu::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Nu::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_PlayerTexture->Bind();
-		Nu::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Nu::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
 		//Nu::Renderer::Submit(m_Shader, m_VertexArray);
 
-		Nu::Renderer::EndScene();
-		
+		Nu::Renderer::EndScene();		
 	}
 
 	virtual void OnImGuiRender() override
@@ -210,10 +211,11 @@ public:
 	{
 	}
 private:
+	Nu::ShaderLibrary m_ShaderLibrary;
 	Nu::Ref<Nu::Shader> m_Shader;
 	Nu::Ref<Nu::VertexArray> m_VertexArray;
 
-	Nu::Ref<Nu::Shader> m_FlatColorShader, m_TextureShader;
+	Nu::Ref<Nu::Shader> m_FlatColorShader;
 	Nu::Ref<Nu::VertexArray> m_SquareVA;
 
 	Nu::Ref<Nu::Texture2D> m_Texture, m_PlayerTexture;
