@@ -102,6 +102,9 @@
     <ClInclude Include="src\Nu\MouseButtonCodes.h">
       <Filter>src\Nu</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\OrthographicCameraController.h">
+      <Filter>src\Nu</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Buffer.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
@@ -1437,6 +1440,9 @@
       <Filter>src\Nu</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Log.cpp">
+      <Filter>src\Nu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\OrthographicCameraController.cpp">
       <Filter>src\Nu</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Buffer.cpp">

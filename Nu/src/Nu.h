@@ -11,6 +11,7 @@
 #include "Nu/Input.h"
 #include "Nu/KeyCodes.h"
 #include "Nu/MouseButtonCodes.h"
+#include "Nu/OrthographicCameraController.h"
 
 #include "Nu/ImGui/ImGuiLayer.h"
 
