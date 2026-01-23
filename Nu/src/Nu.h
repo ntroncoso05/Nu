@@ -2,16 +2,16 @@
 
 // For use by Nu Applications
 
-#include "Nu/Application.h"
-#include "Nu/Layer.h" // not need it, to be more clear that it should be accesible by the client(Sandbox) 
-#include "Nu/Log.h"
+#include "Nu/Core/Application.h"
+#include "Nu/Core/Layer.h" // not need it, to be more clear that it should be accesible by the client(Sandbox) 
+#include "Nu/Core/Log.h"
 
 #include "Nu/Core/Timestep.h"
 
-#include "Nu/Input.h"
-#include "Nu/KeyCodes.h"
-#include "Nu/MouseButtonCodes.h"
-#include "Nu/OrthographicCameraController.h"
+#include "Nu/Core/Input.h"
+#include "Nu/Core/KeyCodes.h"
+#include "Nu/Core/MouseButtonCodes.h"
+#include "Nu/Renderer/OrthographicCameraController.h"
 
 #include "Nu/ImGui/ImGuiLayer.h"
 
@@ -28,5 +28,5 @@
 // ------------------------------------
 
 // ---Entry Point----------------------
-#include "Nu/EntryPoint.h"
+#include "Nu/Core/EntryPoint.h"
 // ------------------------------------

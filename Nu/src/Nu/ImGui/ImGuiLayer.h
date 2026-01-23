@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nu/Layer.h"
+#include "Nu/Core/Layer.h"
 
 #include "Nu/Events/ApplicationEvent.h"
 #include "Nu/Events/KeyEvent.h"

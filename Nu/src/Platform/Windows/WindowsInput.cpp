@@ -1,7 +1,7 @@
 #include "nupch.h"
 #include "WindowsInput.h"
 
-#include "Nu/Application.h"
+#include "Nu/Core/Application.h"
 #include <GLFW/glfw3.h> // ok, because is inside our platform-specific cpp file its not going to get compiled anywhere glfw might not be available
 
 namespace Nu {

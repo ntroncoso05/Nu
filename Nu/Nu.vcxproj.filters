@@ -57,17 +57,38 @@
     <ClInclude Include="src\Nu.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nu\Application.h">
-      <Filter>src\Nu</Filter>
+    <ClInclude Include="src\Nu\Core\Application.h">
+      <Filter>src\Nu\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nu\Core.h">
-      <Filter>src\Nu</Filter>
+    <ClInclude Include="src\Nu\Core\Core.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\EntryPoint.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\Input.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\KeyCodes.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\Layer.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\LayerStack.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\Log.h">
+      <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Core\MouseButtonCodes.h">
+      <Filter>src\Nu\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Core\Timestep.h">
       <Filter>src\Nu\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nu\EntryPoint.h">
-      <Filter>src\Nu</Filter>
+    <ClInclude Include="src\Nu\Core\Window.h">
+      <Filter>src\Nu\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Events\ApplicationEvent.h">
       <Filter>src\Nu\Events</Filter>
@@ -84,27 +105,6 @@
     <ClInclude Include="src\Nu\ImGui\ImGuiLayer.h">
       <Filter>src\Nu\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Nu\Input.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\KeyCodes.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\Layer.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\LayerStack.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\Log.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\MouseButtonCodes.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\OrthographicCameraController.h">
-      <Filter>src\Nu</Filter>
-    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Buffer.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
@@ -112,6 +112,9 @@
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Renderer\OrthographicCamera.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\OrthographicCameraController.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Renderer\RenderCommand.h">
@@ -131,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\Nu\Renderer\VertexArray.h">
       <Filter>src\Nu\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Nu\Window.h">
-      <Filter>src\Nu</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1424,8 +1424,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Nu\Application.cpp">
-      <Filter>src\Nu</Filter>
+    <ClCompile Include="src\Nu\Core\Application.cpp">
+      <Filter>src\Nu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Core\Layer.cpp">
+      <Filter>src\Nu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Core\LayerStack.cpp">
+      <Filter>src\Nu\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Core\Log.cpp">
+      <Filter>src\Nu\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\ImGui\ImGuiBuild.cpp">
       <Filter>src\Nu\ImGui</Filter>
@@ -1433,22 +1442,13 @@
     <ClCompile Include="src\Nu\ImGui\ImGuiLayer.cpp">
       <Filter>src\Nu\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nu\Layer.cpp">
-      <Filter>src\Nu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nu\LayerStack.cpp">
-      <Filter>src\Nu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nu\Log.cpp">
-      <Filter>src\Nu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Nu\OrthographicCameraController.cpp">
-      <Filter>src\Nu</Filter>
-    </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Buffer.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\RenderCommand.cpp">

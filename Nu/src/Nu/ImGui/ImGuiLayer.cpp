@@ -5,7 +5,7 @@
 #include "backends/imgui_impl_glfw.h"		// Same as "ImGuiBuild.cpp"
 #include "backends/imgui_impl_opengl3.h"	// Same as "ImGuiBuild.cpp"
 
-#include "Nu/Application.h"
+#include "Nu/Core/Application.h"
 
 // TEMPORARY
 #include <GLFW/glfw3.h>

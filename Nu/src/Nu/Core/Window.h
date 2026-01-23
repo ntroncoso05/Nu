@@ -2,7 +2,7 @@
 
 #include "nupch.h"
 
-#include "Nu/Core.h"
+#include "Nu/Core/Core.h"
 #include "Nu/Events/Event.h"
 
 namespace Nu {

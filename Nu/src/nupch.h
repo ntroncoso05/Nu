@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Nu/Log.h"
+#include "Nu/Core/Log.h"
 
 #ifdef NU_PLATFORM_WINDOWS
 	#include <Windows.h>

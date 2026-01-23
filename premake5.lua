@@ -100,6 +100,9 @@ project "Nu"
 
 	filter "configurations:Debug"
 		buildoptions "/utf-8"
+
+	filter "configurations:Release"
+		buildoptions "/utf-8"
 		
 project "Sandbox"
 	location "Sandbox"
@@ -154,4 +157,7 @@ project "Sandbox"
 		optimize "on"
 
 	filter "configurations:Debug"
+		buildoptions "/utf-8"
+
+	filter "configurations:Release"
 		buildoptions "/utf-8"

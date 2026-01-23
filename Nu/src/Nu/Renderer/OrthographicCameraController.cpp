@@ -1,8 +1,8 @@
 #include "nupch.h"
 #include "OrthographicCameraController.h"
 
-#include "Nu/Input.h"
-#include "Nu/KeyCodes.h"
+#include "Nu/Core/Input.h"
+#include "Nu/Core/KeyCodes.h"
 
 namespace Nu {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nu/Input.h"
+#include "Nu/Core/Input.h"
 
 namespace Nu {
 
