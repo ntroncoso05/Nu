@@ -17,6 +17,7 @@
 
 // ---Renderer-------------------------
 #include "Nu/Renderer/Renderer.h"
+#include "Nu/Renderer/Renderer2D.h"
 #include "Nu/Renderer/RenderCommand.h"
 
 #include "Nu/Renderer/Buffer.h"
@@ -25,8 +26,4 @@
 #include "Nu/Renderer/VertexArray.h"
 
 #include "Nu/Renderer/OrthographicCamera.h"
-// ------------------------------------
-
-// ---Entry Point----------------------
-#include "Nu/Core/EntryPoint.h"
 // ------------------------------------

@@ -168,6 +168,7 @@
     <ClInclude Include="src\Nu\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Nu\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Nu\Renderer\Renderer.h" />
+    <ClInclude Include="src\Nu\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Nu\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Nu\Renderer\Shader.h" />
     <ClInclude Include="src\Nu\Renderer\Texture.h" />
@@ -614,6 +615,7 @@
     <ClCompile Include="src\Nu\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Nu\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Nu\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Nu\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Nu\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Nu\Renderer\Shader.cpp" />
     <ClCompile Include="src\Nu\Renderer\Texture.cpp" />
