@@ -6,8 +6,12 @@
 namespace Nu {
 	void OpenGLRendererAPI::Init()
 	{
+		// Transparency
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		// Depth, test if whether or not a given pixel is supposed to be behind or front another pixel, front write it to the color buffer if not in front by default the function it will discard it
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	void OpenGLRendererAPI::SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height)
@@ -28,6 +32,7 @@ namespace Nu {
 	void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
 	{
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+		glBindTexture(GL_TEXTURE_2D, 0); // TODO: ?
 	}
 
 }

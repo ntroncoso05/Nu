@@ -5,14 +5,15 @@
 #include "Shader.h"
 #include "RenderCommand.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace Nu {
 
 	struct Renderer2DStorage
 	{
 		Ref<VertexArray> QuadVertexArray;
-		Ref<Shader> FlatColorShader;
+		Ref<Shader> TextureShader;
+		Ref<Texture2D> WhiteTexture;
 	};
 
 	static Renderer2DStorage* s_Data;
@@ -22,17 +23,18 @@ namespace Nu {
 		s_Data = new Renderer2DStorage();
 		s_Data->QuadVertexArray = VertexArray::Create();
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		Ref<VertexBuffer> squareVB;
 		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ ShaderDataType::Float3, "a_Position" } // attributes
+			{ ShaderDataType::Float3, "a_Position" }, // attributes
+			{ ShaderDataType::Float2, "a_TexCoord" } // attributes
 		});
 		s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
@@ -41,7 +43,13 @@ namespace Nu {
 		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
-		s_Data->FlatColorShader = Shader::Create("assets/shaders/FlatColor.glsl");
+		s_Data->WhiteTexture = Texture2D::Create(1, 1);
+		uint32_t whiteTextureData = 0xffffffff;
+		s_Data->WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
+
+		s_Data->TextureShader = Shader::Create("assets/shaders/Texture.glsl");
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetInt("u_Texture", 0);
 	}
 
 	void Renderer2D::Shutdown()
@@ -51,14 +59,12 @@ namespace Nu {
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformMat4("u_Transform", glm::mat4(1.0f));
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix()); // Uniform
 	}
 
 	void Renderer2D::EndScene()
 	{
-
 	}
 	
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
@@ -68,8 +74,28 @@ namespace Nu {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
 	{
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(s_Data->FlatColorShader)->UploadUniformFloat4("u_Color", color);
+		s_Data->TextureShader->SetFloat4("u_Color", color); // Uniform
+		s_Data->WhiteTexture->Bind();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x,size.y,1.0f });
+		s_Data->TextureShader->SetMat4("u_Transform", transform); // Uniform
+
+		s_Data->QuadVertexArray->Bind();
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		DrawQuad({ position.x, position.y, 0.0f }, size, texture);
+	}
+
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture)
+	{
+		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
+		texture->Bind();
+
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x,size.y,1.0f });
+		s_Data->TextureShader->SetMat4("u_Transform", transform); // Uniform
 
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
