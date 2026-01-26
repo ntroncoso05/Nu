@@ -10,6 +10,9 @@
     <Filter Include="src\Nu\Core">
       <UniqueIdentifier>{37D69C95-A38B-158B-2C80-0F6298340C8F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Nu\Debug">
+      <UniqueIdentifier>{35F84349-215B-D3ED-CAE0-0BA4B6229F70}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Nu\Events">
       <UniqueIdentifier>{83514D75-EF11-C9AB-B84C-122924CC0D88}</UniqueIdentifier>
     </Filter>
@@ -89,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="src\Nu\Core\Window.h">
       <Filter>src\Nu\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Debug\Instrumentor.h">
+      <Filter>src\Nu\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Events\ApplicationEvent.h">
       <Filter>src\Nu\Events</Filter>

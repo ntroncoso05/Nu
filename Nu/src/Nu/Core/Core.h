@@ -43,7 +43,6 @@
 	#error "Unknown platform!"
 #endif // End of platform detection
 
-
 // DLL support
 #ifdef NU_PLATFORM_WINDOWS
 	#if NU_DYNAMIC_LINK

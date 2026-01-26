@@ -15,6 +15,8 @@
 
 #include "Nu/Core/Log.h"
 
+#include "Nu/Debug/Instrumentor.h"
+
 #ifdef NU_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
