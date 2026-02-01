@@ -25,9 +25,10 @@ layout(location = 0) out vec4 color; // output color
 in vec2 v_TexCoord;
 
 uniform vec4 u_Color;
+uniform float u_TilingFactor;
 uniform sampler2D u_Texture; // sampler2D it's basically an int (a texture slot to sample from)
 			
 void main()
 {
-	color = texture(u_Texture, v_TexCoord * 10.0f) * u_Color;
+	color = texture(u_Texture, v_TexCoord * u_TilingFactor) * u_Color;
 }
