@@ -10,6 +10,8 @@ namespace Nu {
 
 	void Renderer::Init()
 	{
+		NU_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

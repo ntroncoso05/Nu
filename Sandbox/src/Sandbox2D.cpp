@@ -11,11 +11,14 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	NU_PROFILE_FUNCTION();
+
 	m_CheckerboardTexture = Nu::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	NU_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(Nu::Timestep ts)
@@ -23,10 +26,7 @@ void Sandbox2D::OnUpdate(Nu::Timestep ts)
 	NU_PROFILE_FUNCTION();
 
 	// Update
-	{
-		NU_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 
 	// Render
 	{

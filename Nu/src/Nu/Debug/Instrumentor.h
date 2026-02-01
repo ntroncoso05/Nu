@@ -143,8 +143,7 @@ namespace Nu
     #define NU_PROFILE_END_SESSION() ::Nu::Instrumentor::Get().EndSession()
     #define CONCAT(x, y) x ## y
     #define C(x, y) CONCAT(x, y)
-    #define NU_PROFILE_SCOPE(name) ::Nu::InstrumentationTimer C(timer, __LINE__)(name)
-    //#define NU_PROFILE_SCOPE(name) ::Nu::InstrumentationTimer timer##__LINE__(name);
+    #define NU_PROFILE_SCOPE(name) ::Nu::InstrumentationTimer C(timer, __LINE__)(name) //#define NU_PROFILE_SCOPE(name) ::Nu::InstrumentationTimer timer##__LINE__(name);
     #define NU_PROFILE_FUNCTION() NU_PROFILE_SCOPE(__FUNCSIG__)
 #else
     #define NU_PROFILE_BEGIN_SESSION(name, filepath)

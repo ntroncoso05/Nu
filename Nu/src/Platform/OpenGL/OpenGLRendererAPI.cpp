@@ -4,8 +4,11 @@
 #include <glad/glad.h>
 
 namespace Nu {
+
 	void OpenGLRendererAPI::Init()
 	{
+		NU_PROFILE_FUNCTION();
+
 		// Transparency
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

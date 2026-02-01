@@ -40,7 +40,7 @@ namespace Nu {
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps & = WindowProps());
+		static Scope<Window> Create(const WindowProps & = WindowProps());
 	};
 
 }

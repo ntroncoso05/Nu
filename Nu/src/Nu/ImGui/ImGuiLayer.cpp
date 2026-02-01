@@ -1,7 +1,7 @@
 #include "nupch.h"
 #include "ImGuiLayer.h"
 
-//#include "imgui.h"
+#include "imgui.h"
 #include "backends/imgui_impl_glfw.h"		// Same as "ImGuiBuild.cpp"
 #include "backends/imgui_impl_opengl3.h"	// Same as "ImGuiBuild.cpp"
 
@@ -24,6 +24,8 @@ namespace Nu {
 
 	void ImGuiLayer::OnAttach()
 	{
+		NU_PROFILE_FUNCTION();
+
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -59,6 +61,8 @@ namespace Nu {
 
 	void ImGuiLayer::OnDetach()
 	{
+		NU_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -66,6 +70,8 @@ namespace Nu {
 
 	void ImGuiLayer::Begin()
 	{
+		NU_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -73,6 +79,8 @@ namespace Nu {
 
 	void ImGuiLayer::End()
 	{
+		NU_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());

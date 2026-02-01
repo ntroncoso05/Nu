@@ -1,7 +1,7 @@
 #include "nupch.h"
 #include "Application.h"
 
-//#include "Nu/Log.h"
+#include "Nu/Core/Log.h"
 
 #include "Nu/Renderer/Renderer.h"
 
@@ -17,10 +17,12 @@ namespace Nu {
 
 	Application::Application()
 	{
+		NU_PROFILE_FUNCTION();
+
 		NU_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create()); // explicit constructor need std::unique_ptr<Window>()
+		m_Window = Window::Create(); // explicit constructor need std::unique_ptr<Window>()
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init();
@@ -31,22 +33,32 @@ namespace Nu {
 
 	Application::~Application()
 	{
+		NU_PROFILE_FUNCTION();
+
+		// TODO: Check
+		//Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
+		NU_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		NU_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		NU_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -62,22 +74,34 @@ namespace Nu {
 
 	void Application::run()
 	{
+		NU_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			NU_PROFILE_SCOPE("RunLoop");
+
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime; // implicit cast constructor
 			m_LastFrameTime = time;
 
 			if(!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					NU_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					NU_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -91,6 +115,8 @@ namespace Nu {
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		NU_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;
