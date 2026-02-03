@@ -27,9 +27,9 @@ namespace Nu {
 			s_RendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray) // static wrapper for the actual implementation
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0) // static wrapper for the actual implementation
 		{
-			s_RendererAPI->DrawIndexed(vertexArray);
+			s_RendererAPI->DrawIndexed(vertexArray, indexCount);
 		}
 	private:
 		static RendererAPI* s_RendererAPI;

@@ -26,8 +26,7 @@ public:
 		};
 
 		// Vertex Buffer
-		Nu::Ref<Nu::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Nu::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Nu::Ref<Nu::VertexBuffer> vertexBuffer = Nu::VertexBuffer::Create(vertices, sizeof(vertices));
 		Nu::BufferLayout layout = {
 			{ Nu::ShaderDataType::Float3, "a_Position" },
 			{ Nu::ShaderDataType::Float4, "a_Color" }
@@ -37,8 +36,7 @@ public:
 
 		// Index Buffer
 		uint32_t indices[3] = { 0, 1, 2 };
-		Nu::Ref<Nu::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Nu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		Nu::Ref<Nu::IndexBuffer> indexBuffer = Nu::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		// Square Vertex Array
@@ -52,8 +50,7 @@ public:
 		};
 
 		// Square Vertex Buffer
-		Nu::Ref<Nu::VertexBuffer> squareVB;
-		squareVB.reset(Nu::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Nu::Ref<Nu::VertexBuffer> squareVB = Nu::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ Nu::ShaderDataType::Float3, "a_Position" }, // attributes
 			{ Nu::ShaderDataType::Float2, "a_TexCoord" }
@@ -62,8 +59,7 @@ public:
 
 		// Square Index Buffer
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Nu::Ref<Nu::IndexBuffer> squareIB;
-		squareIB.reset(Nu::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Nu::Ref<Nu::IndexBuffer> squareIB = Nu::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		// A uniform is a per draw call kind of value to set to the shader from the CPU side (C++ side in this case)

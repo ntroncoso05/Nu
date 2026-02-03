@@ -109,12 +109,16 @@ namespace Nu {
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
+		virtual void SetData(const void* data, uint32_t size) = 0;
+
 		virtual const BufferLayout GetLayout() const = 0;
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 
-		static VertexBuffer* Create(float* vertices, uint32_t size); // kinda the constructor, could use usize_t instead of uint32_t
+		static Ref<VertexBuffer> Create(uint32_t size);
+		static Ref<VertexBuffer> Create(float* vertices, uint32_t size); // kinda the constructor, could use usize_t instead of uint32_t
 	};
 
+	// Currently Nu only supports 32-bit index buffers
 	class IndexBuffer
 	{
 	public:
@@ -126,6 +130,6 @@ namespace Nu {
 		virtual uint32_t GetCount() const = 0;
 
 		// using 32 bits int, could change to 16 bits as an optimization but probably could run out of indices
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size); // kinda the constructor
+		static Ref<IndexBuffer> Create(uint32_t* indices, uint32_t count); // kinda the constructor
 	};
 }
