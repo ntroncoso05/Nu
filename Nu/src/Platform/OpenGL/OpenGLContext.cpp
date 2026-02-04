@@ -22,9 +22,9 @@ namespace Nu {
 		NU_CORE_ASSERT(status, "Failed to initialized Glad!");
 
 		NU_CORE_INFO("OpenGL Info:");
-		NU_CORE_INFO("  Vendor: {0}",	(void*)glGetString(GL_VENDOR));
-		NU_CORE_INFO("  Renderer: {0}", (void*)glGetString(GL_RENDERER));
-		NU_CORE_INFO("  Version: {0}",	(void*)glGetString(GL_VERSION));
+		NU_CORE_INFO("  Vendor: {0}",	(const char*)glGetString(GL_VENDOR));
+		NU_CORE_INFO("  Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+		NU_CORE_INFO("  Version: {0}",	(const char*)glGetString(GL_VERSION));
 
 	#ifdef NU_ENABLE_ASSERTS
 		int versionMajor;
