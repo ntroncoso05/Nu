@@ -319,7 +319,7 @@ namespace Nu {
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
 			s_Data.QuadVertexBufferPtr++;
 		}
-		
+
 		s_Data.QuadIndexCount += 6;
 
 		s_Data.Stats.QuadCount++;
