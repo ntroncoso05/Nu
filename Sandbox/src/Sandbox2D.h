@@ -2,6 +2,8 @@
 
 #include "Nu.h"
 
+#include "ParticleSystem.h"
+
 class Sandbox2D : public Nu::Layer
 {
 public:
@@ -24,4 +26,7 @@ private:
 	Nu::Ref<Nu::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
+	ParticleSystem m_ParticleSystem;
+	ParticleProps m_Particle;
 };
