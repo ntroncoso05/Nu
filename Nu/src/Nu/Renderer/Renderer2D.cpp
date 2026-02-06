@@ -195,9 +195,18 @@ namespace Nu {
 	{
 		NU_PROFILE_FUNCTION();
 
+		constexpr float x = 7.0f, y = 6.0f;
+		constexpr float sheetWidth = 2560.0f, sheetHeight = 1664.0f;
+		constexpr float spriteWidth = 128.0f, spriteHeight = 128.0f;
+
 		constexpr size_t quadVertexCount = 4;
 		constexpr glm::vec4 color = { 1.0f,1.0f ,1.0f ,1.0f };
-		constexpr glm::vec2 textureCoords[] = { { 0.0f, 0.0f }, { 1.0f, 0.0f }, { 1.0f, 1.0f }, { 0.0f, 1.0f } };
+		constexpr glm::vec2 textureCoords[] = {
+			{ (x * spriteWidth) / sheetWidth, (y * spriteHeight) / sheetHeight }, // Bottom Left
+			{ ((x + 1) * spriteWidth) / sheetWidth, (y * spriteHeight) / sheetHeight }, // Bottom Right
+			{ ((x + 1) * spriteWidth) / sheetWidth, ((y + 1) * spriteHeight) / sheetHeight }, // Top Right
+			{ (x * spriteWidth) / sheetWidth, ((y + 1) * spriteHeight) / sheetHeight } // Top Left
+		};
 
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
