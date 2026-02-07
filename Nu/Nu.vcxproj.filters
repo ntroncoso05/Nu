@@ -138,6 +138,9 @@
     <ClInclude Include="src\Nu\Renderer\Shader.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\SubTexture2D.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Texture.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
@@ -1473,6 +1476,9 @@
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Shader.cpp">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Renderer\SubTexture2D.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Texture.cpp">
