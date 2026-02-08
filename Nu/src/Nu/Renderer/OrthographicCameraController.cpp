@@ -32,6 +32,11 @@ namespace Nu {
 			if (Input::IsKeyPressed(NU_KEY_E))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
 
+			if (m_CameraRotation > 180.0f)
+				m_CameraRotation -= 360.0f;
+			else if (m_CameraRotation <= -180.0f)
+				m_CameraRotation += 360.0f;
+
 			m_Camera.SetRotation(m_CameraRotation);
 		}
 
@@ -49,14 +54,19 @@ namespace Nu {
 		dispatcher.Dispatch<WindowResizeEvent>(NU_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
 	}
 
+	void OrthographicCameraController::CalculateView()
+	{
+		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
+		m_Camera.SetProjection(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top);
+	}
+
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
 		NU_PROFILE_FUNCTION();
 
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f); // Clamp the value not to go below 0.25f
-		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
-		m_Camera.SetProjection(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top);
+		CalculateView();
 		return false;
 	}
 
@@ -65,8 +75,7 @@ namespace Nu {
 		NU_PROFILE_FUNCTION();
 
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		m_Bounds = { -m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel };
-		m_Camera.SetProjection(m_Bounds.Left, m_Bounds.Right, m_Bounds.Bottom, m_Bounds.Top);
+		CalculateView();
 		return false;
 	}
 

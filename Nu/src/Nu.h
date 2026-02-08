@@ -2,8 +2,10 @@
 
 // For use by Nu Applications
 
+#include "Nu/Core/Core.h"
+
 #include "Nu/Core/Application.h"
-#include "Nu/Core/Layer.h" // not need it, to be more clear that it should be accesible by the client(Sandbox) 
+#include "Nu/Core/Layer.h" // not need it, to be more clear that it should be accesible by the client(Sandbox) ?
 #include "Nu/Core/Log.h"
 
 #include "Nu/Core/Timestep.h"
@@ -22,8 +24,8 @@
 
 #include "Nu/Renderer/Buffer.h"
 #include "Nu/Renderer/Shader.h"
+#include "Nu/Renderer/Framebuffer.h"
 #include "Nu/Renderer/Texture.h"
-#include "Nu/Renderer/SubTexture2D.h"
 #include "Nu/Renderer/VertexArray.h"
 
 #include "Nu/Renderer/OrthographicCamera.h"

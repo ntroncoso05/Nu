@@ -2,8 +2,6 @@
 
 #include "Nu.h"
 
-#include "ParticleSystem.h"
-
 class Sandbox2D : public Nu::Layer
 {
 public:
@@ -20,15 +18,11 @@ private:
 	Nu::OrthographicCameraController m_CameraController;
 
 	// Temp
-	Nu::Ref<Nu::Shader> m_FlatColorShader;
 	Nu::Ref<Nu::VertexArray> m_SquareVA;
+	Nu::Ref<Nu::Shader> m_FlatColorShader;
+	Nu::Ref<Nu::Framebuffer> m_Framebuffer;
 
 	Nu::Ref<Nu::Texture2D> m_CheckerboardTexture;
-	Nu::Ref<Nu::Texture2D> m_SpriteSheet;
-	Nu::Ref<Nu::SubTexture2D> m_TextureStairs, m_TextureBarrel, m_TextureTree;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
-
-	ParticleSystem m_ParticleSystem;
-	ParticleProps m_Particle;
 };

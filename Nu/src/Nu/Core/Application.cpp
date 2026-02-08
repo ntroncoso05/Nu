@@ -55,6 +55,11 @@ namespace Nu {
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		NU_PROFILE_FUNCTION();
