@@ -1,5 +1,7 @@
 #include "nupch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
+
+#include "Nu/Core/Input.h"
 
 #include "Nu/Events/ApplicationEvent.h"
 #include "Nu/Events/KeyEvent.h"
@@ -14,11 +16,6 @@ namespace Nu {
 	static void GLFWErrorCallback(int error, const char* description)
 	{
 		NU_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
-	}
-
-	Scope<Window> Window::Create(const WindowProps& props)
-	{
-		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)

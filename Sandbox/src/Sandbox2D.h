@@ -20,7 +20,6 @@ private:
 	// Temp
 	Nu::Ref<Nu::VertexArray> m_SquareVA;
 	Nu::Ref<Nu::Shader> m_FlatColorShader;
-	Nu::Ref<Nu::Framebuffer> m_Framebuffer;
 
 	Nu::Ref<Nu::Texture2D> m_CheckerboardTexture;
 

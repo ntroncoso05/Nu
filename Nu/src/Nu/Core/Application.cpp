@@ -15,14 +15,14 @@ namespace Nu {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& name)
 	{
 		NU_PROFILE_FUNCTION();
 
 		NU_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = Window::Create(); // explicit constructor need std::unique_ptr<Window>()
+		m_Window = Window::Create(WindowProps(name)); // explicit constructor need std::unique_ptr<Window>()
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		Renderer::Init();

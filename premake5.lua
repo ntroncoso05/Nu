@@ -1,5 +1,5 @@
 workspace "Nu"
-	architecture "x64"
+	architecture "x86_64"
 	startproject "Sandbox" --Not Working
 
 	configurations
@@ -7,6 +7,11 @@ workspace "Nu"
 		"Debug",
 		"Release",
 		"Dist"
+	}
+
+	flags
+	{
+		"MultiProcessorCompile"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -23,7 +28,6 @@ group "Dependencies"
 	include "Nu/vendor/GLFW"
 	include "Nu/vendor/Glad"
 	include "Nu/vendor/ImGui"
-
 group ""
 
 project "Nu"
@@ -51,7 +55,8 @@ project "Nu"
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
@@ -78,31 +83,24 @@ project "Nu"
 
 		defines
 		{
-			"NU_PLATFORM_WINDOWS",
-			"NU_BUILD_DLL",
-			"GLFW_INCLUDE_NONE" -- will not include any OPENGL header with GLFW
 		}
 		
 	filter "configurations:Debug"
 		defines "NU_DEBUG"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/utf-8"
 		
 	filter "configurations:Release"
 		defines "NU_RELEASE"
 		runtime "Release"
 		optimize "on"
+		buildoptions "/utf-8"
 		
 	filter "configurations:Dist"
 		defines "NU_DIST"
 		runtime "Release"
 		optimize "on"
-
-	filter "configurations:Debug"
-		buildoptions "/utf-8"
-
-	filter "configurations:Release"
-		buildoptions "/utf-8"
 		
 project "Sandbox"
 	location "Sandbox"
@@ -136,28 +134,68 @@ project "Sandbox"
 	filter "system:windows"
 		systemversion "latest"
 
-		defines
-		{
-			"NU_PLATFORM_WINDOWS"
-		}
-
 	filter "configurations:Debug"
 		defines "NU_DEBUG"
 		runtime "Debug"
 		symbols "on"
+		buildoptions "/utf-8"
 		
 	filter "configurations:Release"
 		defines "NU_RELEASE"
 		runtime "Release"
 		optimize "on"
+		buildoptions "/utf-8"
 		
 	filter "configurations:Dist"
 		defines "NU_DIST"
 		runtime "Release"
 		optimize "on"
 
-	filter "configurations:Debug"
-		buildoptions "/utf-8"
+project "Nu-Editor"
+	location "Nu-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
 
-	filter "configurations:Release"
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Nu/vendor/spdlog/include",
+		"Nu/src",
+		"Nu/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"Nu"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+	filter "configurations:Debug"
+		defines "NU_DEBUG"
+		runtime "Debug"
+		symbols "on"
 		buildoptions "/utf-8"
+		
+	filter "configurations:Release"
+		defines "NU_RELEASE"
+		runtime "Release"
+		optimize "on"
+		buildoptions "/utf-8"
+		
+	filter "configurations:Dist"
+		defines "NU_DIST"
+		runtime "Release"
+		optimize "on"

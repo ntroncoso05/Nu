@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Nu\vendor\ImGui\Im
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nu", "Nu\Nu.vcxproj", "{C8745900-B400-880B-1DAF-880B095A880B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nu-Editor", "Nu-Editor\Nu-Editor.vcxproj", "{7C075B9A-E871-0F11-31B0-C0B69D59ED65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -50,6 +52,12 @@ Global
 		{C8745900-B400-880B-1DAF-880B095A880B}.Dist|x64.Build.0 = Dist|x64
 		{C8745900-B400-880B-1DAF-880B095A880B}.Release|x64.ActiveCfg = Release|x64
 		{C8745900-B400-880B-1DAF-880B095A880B}.Release|x64.Build.0 = Release|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Debug|x64.ActiveCfg = Debug|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Debug|x64.Build.0 = Debug|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Dist|x64.ActiveCfg = Dist|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Dist|x64.Build.0 = Dist|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Release|x64.ActiveCfg = Release|x64
+		{7C075B9A-E871-0F11-31B0-C0B69D59ED65}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

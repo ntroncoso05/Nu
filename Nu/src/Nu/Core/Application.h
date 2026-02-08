@@ -16,7 +16,7 @@ namespace Nu {
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Nu App");
 		virtual ~Application();
 
 		void run();
