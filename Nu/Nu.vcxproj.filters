@@ -1451,6 +1451,9 @@
     <ClCompile Include="src\Nu\Core\Log.cpp">
       <Filter>src\Nu\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Nu\Core\Window.cpp">
+      <Filter>src\Nu\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Nu\ImGui\ImGuiBuild.cpp">
       <Filter>src\Nu\ImGui</Filter>
     </ClCompile>
@@ -1523,6 +1526,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Nu\Core\Window.cpp" />
   </ItemGroup>
 </Project>

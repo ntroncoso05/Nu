@@ -1,6 +1,6 @@
 workspace "Nu"
 	architecture "x86_64"
-	startproject "Sandbox" --Not Working
+	startproject "Nu-Editor" --Not Working
 
 	configurations
 	{
@@ -83,6 +83,7 @@ project "Nu"
 
 		defines
 		{
+			"HZ_PLATFORM_WINDOWS"
 		}
 		
 	filter "configurations:Debug"

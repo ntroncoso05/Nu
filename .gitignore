@@ -12,3 +12,6 @@ bin-int
 /Sandbox/NuProfile-Runtime.json
 /Sandbox/NuProfile-Shutdown.json
 /Sandbox/NuProfile-Startup.json
+/Nu-Editor/NuProfile-Runtime.json
+/Nu-Editor/NuProfile-Shutdown.json
+/Nu-Editor/NuProfile-Startup.json
