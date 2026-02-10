@@ -12,7 +12,7 @@
 
 #include "Nu/Core/Input.h"
 #include "Nu/Core/KeyCodes.h"
-#include "Nu/Core/MouseButtonCodes.h"
+#include "Nu/Core/MouseCodes.h"
 #include "Nu/Renderer/OrthographicCameraController.h"
 
 #include "Nu/ImGui/ImGuiLayer.h"

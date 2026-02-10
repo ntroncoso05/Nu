@@ -11,6 +11,8 @@
 
 #include <Nu/ImGui/ImGuiLayer.h>
 
+int main(int argc, char** argv);
+
 namespace Nu {
 
 	class Application
@@ -18,8 +20,6 @@ namespace Nu {
 	public:
 		Application(const std::string& name = "Nu App");
 		virtual ~Application();
-
-		void run();
 
 		void OnEvent(Event& e);
 
@@ -30,8 +30,11 @@ namespace Nu {
 
 		void Close();
 
-		inline static Application& Get() { return *s_Instance; }
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
+		static Application& Get() { return *s_Instance; }
 	private:
+		void run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -43,10 +46,9 @@ namespace Nu {
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int::main(int argc, char** argv);
 	};
 
 	// To be defined in CLIENT
 	Application* CreateApplication();
 }
-
-
