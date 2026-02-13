@@ -23,6 +23,7 @@ IncludeDir["Glad"] = "Nu/vendor/Glad/include"
 IncludeDir["ImGui"] = "Nu/vendor/imgui"
 IncludeDir["glm"] = "Nu/vendor/glm"
 IncludeDir["stb_image"] = "Nu/vendor/stb_image"
+IncludeDir["entt"] = "Nu/vendor/entt/include"
 
 group "Dependencies"
 	include "Nu/vendor/GLFW"
@@ -67,7 +68,8 @@ project "Nu"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
@@ -173,7 +175,8 @@ project "Nu-Editor"
 		"Nu/vendor/spdlog/include",
 		"Nu/src",
 		"Nu/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links

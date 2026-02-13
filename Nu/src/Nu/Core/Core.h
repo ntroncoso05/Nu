@@ -58,6 +58,7 @@
 	#error Nu only supports Windows!
 #endif // End of DLL support
 
+// TODO: Make it to take no arguments
 #ifdef NU_DEBUG
 	#define NU_ENABLE_ASSERTS
 #endif
