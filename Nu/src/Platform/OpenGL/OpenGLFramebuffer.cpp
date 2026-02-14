@@ -7,7 +7,7 @@ namespace Nu {
 
 	static const uint32_t s_MaxFramebufferSize = 8192;
 
-	OpenGLFramebuffer::OpenGLFramebuffer(const FrambufferSpecification& spec)
+	OpenGLFramebuffer::OpenGLFramebuffer(const FramebufferSpecification& spec)
 		:m_Specification(spec)
 	{
 		Invalidate();

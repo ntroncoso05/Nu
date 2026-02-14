@@ -19,8 +19,8 @@
 
 #include "Nu/Scene/Scene.h"
 #include "Nu/Scene/Entity.h"
+#include "Nu/Scene/ScriptableEntity.h"
 #include "Nu/Scene/Component.h"
-
 
 // ---Renderer-------------------------
 #include "Nu/Renderer/Renderer.h"

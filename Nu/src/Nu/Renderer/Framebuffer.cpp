@@ -7,7 +7,7 @@
 
 namespace Nu {
 
-	Ref<Framebuffer> Framebuffer::Create(const FrambufferSpecification& spec)
+	Ref<Framebuffer> Framebuffer::Create(const FramebufferSpecification& spec)
 	{
 		switch (Renderer::GetAPI())
 		{

@@ -4,7 +4,7 @@
 
 namespace Nu {
 
-	struct FrambufferSpecification // struct of properties
+	struct FramebufferSpecification // struct of properties
 	{
 		uint32_t Width, Height;
 		// FramebufferFormat Format =
@@ -24,9 +24,9 @@ namespace Nu {
 
 		virtual uint32_t GetColorAttachmentRendererID() const = 0;
 
-		virtual const FrambufferSpecification& GetSpecification() const = 0;
+		virtual const FramebufferSpecification& GetSpecification() const = 0;
 
-		static Ref<Framebuffer> Create(const FrambufferSpecification& spec);
+		static Ref<Framebuffer> Create(const FramebufferSpecification& spec);
 	};
 
 }

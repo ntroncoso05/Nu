@@ -2,6 +2,9 @@
 
 #include <glm/glm.hpp>
 
+#include "SceneCamera.h"
+#include "ScriptableEntity.h"
+
 namespace Nu {
 
 	struct TagComponent
@@ -11,8 +14,7 @@ namespace Nu {
 		TagComponent() = default;
 		TagComponent(const TagComponent&) = default;
 		TagComponent(const std::string& tag)
-			:Tag(tag) {
-		}
+			:Tag(tag) {}
 	};
 
 	struct TransformComponent
@@ -35,7 +37,32 @@ namespace Nu {
 		SpriteRendererComponent() = default;
 		SpriteRendererComponent(const SpriteRendererComponent&) = default;
 		SpriteRendererComponent(const glm::vec4& color)
-			:Color(color) { }
+			:Color(color) {}
+	};
+
+	struct CameraComponent
+	{
+		SceneCamera Camera;
+		bool Primary = true; // TODO: Moving to Scene
+		bool FixedAspectRatio = false;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+	};
+
+	struct NativeScriptComponent
+	{
+		ScriptableEntity* Instance = nullptr;
+
+		ScriptableEntity* (*InstantiateScript)();
+		void (*DestroyScript)(NativeScriptComponent*);
+
+		template<typename T>
+		void Bind()
+		{
+			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
+			DestroyScript = [](NativeScriptComponent* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
+		}
 	};
 
 }

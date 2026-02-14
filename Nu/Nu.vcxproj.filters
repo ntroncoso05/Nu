@@ -117,6 +117,9 @@
     <ClInclude Include="src\Nu\Renderer\Buffer.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\Camera.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Framebuffer.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
@@ -157,6 +160,12 @@
       <Filter>src\Nu\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Nu\Scene\Scene.h">
+      <Filter>src\Nu\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Scene\SceneCamera.h">
+      <Filter>src\Nu\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Nu\Scene\ScriptableEntity.h">
       <Filter>src\Nu\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -1506,6 +1515,9 @@
       <Filter>src\Nu\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Scene\Scene.cpp">
+      <Filter>src\Nu\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Scene\SceneCamera.cpp">
       <Filter>src\Nu\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
