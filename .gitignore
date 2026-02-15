@@ -2,10 +2,25 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+#Binaries
+**/bin/
+
+!vendor/premake/bin/
+
 # Directories
-/.vs/Nu
-bin
-bin-int
+/.vs/Nu/
+bin/
+bin-int/
+
+# Nu files
+*.log
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
 
 # Files
 *.user

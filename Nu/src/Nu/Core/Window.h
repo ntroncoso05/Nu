@@ -1,9 +1,10 @@
 #pragma once
 
+#include <sstream>
+
 #include "Nu/Core/Core.h"
 #include "Nu/Events/Event.h"
 
-#include <sstream>
 
 namespace Nu {
 

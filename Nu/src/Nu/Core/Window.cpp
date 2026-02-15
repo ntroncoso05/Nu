@@ -1,7 +1,7 @@
 #include "nupch.h"
 #include "Nu/Core/Window.h"
 
-#ifdef HZ_PLATFORM_WINDOWS
+#ifdef NU_PLATFORM_WINDOWS
 	#include "Platform/Windows/WindowsWindow.h"
 #endif
 

@@ -1,7 +1,7 @@
 #include "nupch.h"
 #include "Scene.h"
 
-#include "Component.h"
+#include "Components.h"
 #include "Nu/Renderer/Renderer2D.h"
 
 #include <glm/glm.hpp>

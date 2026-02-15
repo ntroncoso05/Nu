@@ -7,7 +7,7 @@
 
 namespace Nu {
 
-	class NU_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack() = default;

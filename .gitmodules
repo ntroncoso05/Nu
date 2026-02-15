@@ -1,12 +1,16 @@
 [submodule "Nu/vendor/spdlog"]
 	path = Nu/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = ../../gabime/spdlog.git
+	branch = v1.x
 [submodule "Nu/vendor/GLFW"]
 	path = Nu/vendor/GLFW
-	url = https://github.com/TheCherno/glfw
+	url = ../../TheCherno/glfw.git
+	branch = master
 [submodule "Nu/vendor/imgui"]
 	path = Nu/vendor/imgui
-	url = https://github.com/TheCherno/imgui
+	url = ../../TheCherno/imgui.git
+	branch = docking
 [submodule "Nu/vendor/glm"]
 	path = Nu/vendor/glm
-	url = https://github.com/g-truc/glm
+	url = ../../g-truc/glm.git
+	branch = master

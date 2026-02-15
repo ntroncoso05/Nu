@@ -58,14 +58,21 @@ namespace Nu {
 		NU_PROFILE_FUNCTION();
 
 		std::string result;
-		std::ifstream in(filepath, std::ios::in | std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary); // ifstream closes itself due to RAII
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
-			result.resize(in.tellg());
-			in.seekg(0, std::ios::beg);
-			in.read(&result[0], result.size());
-			in.close();
+			size_t size = in.tellg();
+			if(size != 1)
+			{
+				result.resize(size);
+				in.seekg(0, std::ios::beg);
+				in.read(&result[0], size);
+			}
+			else
+			{
+				NU_CORE_ERROR("Could not read from file '{0}'", filepath);
+			}
 		}
 		else
 		{
@@ -86,15 +93,17 @@ namespace Nu {
 		size_t pos = source.find(typeToken, 0);
 		while (pos != std::string::npos)
 		{
-			size_t eol = source.find_first_of("\r\n", pos);
+			size_t eol = source.find_first_of("\r\n", pos); // End of shader type declaration line
 			NU_CORE_ASSERT(eol != std::string::npos, "Syntax error!");
-			size_t begin = pos + typeTokenLength + 1;
+			size_t begin = pos + typeTokenLength + 1; // Start of shader type name (after "#type " keyword)
 			std::string type = source.substr(begin, eol - begin);
 			NU_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified");
 
-			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
-			pos = source.find(typeToken, nextLinePos);
-			shaderSources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
+			size_t nextLinePos = source.find_first_not_of("\r\n", eol); // Start of shader code after shader type declaration line
+			NU_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
+			pos = source.find(typeToken, nextLinePos); // Start of next shader type declaration line
+
+			shaderSources[ShaderTypeFromString(type)] = (pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
 		}
 
 		return shaderSources;
@@ -103,27 +112,22 @@ namespace Nu {
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
 		NU_PROFILE_FUNCTION();
-
-		// Get a program object.
-		GLuint program = glCreateProgram();
-		NU_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");
-		// Keep track of the OpenGL Shader IDs
-		std::array<GLenum, 2> glShaderIDs;
+		
+		GLuint program = glCreateProgram(); // Get a program object.
+		NU_CORE_ASSERT(shaderSources.size() <= 2, "We only support 2 shaders for now");		
+		std::array<GLenum, 2> glShaderIDs; // Keep track of the OpenGL Shader IDs
 		int glShaderIDIndex = 0;
 		for (auto& kv : shaderSources)
 		{
 			GLenum type = kv.first;
 			const std::string& source = kv.second;
-
-			// Create an empty vertex shader handle
-			GLuint shader = glCreateShader(type);
-
-			// Send the vertex shader source code to GL, Note that std::string's .c_str is NULL character terminated.
-			const GLchar* sourceCStr = source.c_str();
+						
+			GLuint shader = glCreateShader(type); // Create an empty vertex shader handle
+						
+			const GLchar* sourceCStr = source.c_str(); // Send the vertex shader source code to GL, Note that std::string's .c_str is NULL character terminated.
 			glShaderSource(shader, 1, &sourceCStr, 0);
-
-			// Compile the vertex shader
-			glCompileShader(shader);
+						
+			glCompileShader(shader); // Compile the vertex shader
 
 			GLint isCompiled = 0;
 			glGetShaderiv(shader, GL_COMPILE_STATUS, &isCompiled);
@@ -131,25 +135,23 @@ namespace Nu {
 			{
 				GLint maxLength = 0;
 				glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
-
-				// The maxLength includes the NULL character
-				std::vector<GLchar> infoLog(maxLength);
+								
+				std::vector<GLchar> infoLog(maxLength); // The maxLength includes the NULL character
 				glGetShaderInfoLog(shader, maxLength, &maxLength, &infoLog[0]);
-
-				// We don't need the shader anymore.
-				glDeleteShader(shader);
+								
+				glDeleteShader(shader); // We don't need the shader anymore.
 
 				NU_CORE_ERROR("{0}", infoLog.data());
 				NU_CORE_ASSERT(false, "Shader compilation failure!");
 				break;
 			}
-
-			// Attach our shaders to our program
-			glAttachShader(program, shader);
+						
+			glAttachShader(program, shader); // Attach our shaders to our program
 			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 		
-		// Vertex and fragment shaders are successfully compiled. Now time to link them together into a program.
+		m_RendererID = program;
+
 		// Link our program
 		glLinkProgram(program);
 
@@ -167,21 +169,20 @@ namespace Nu {
 
 			// We don't need the program anymore.
 			glDeleteProgram(program);
-
-			// Don't leak shaders either.
+						
 			for(auto id : glShaderIDs)
-				glDeleteShader(id);
+				glDeleteShader(id); // Don't leak shaders either.
 
 			NU_CORE_ERROR("{0}", infoLog.data());
 			NU_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}
-
-		// Always detach shaders after a successful link.
-		for (auto id : glShaderIDs)
+		
+		for (auto id : glShaderIDs) // Always detach shaders after a successful link.
+		{
 			glDetachShader(program, id);
-
-		m_RendererID = program;
+			glDeleteShader(id);
+		}
 	}
 
 	void OpenGLShader::Bind() const
@@ -207,8 +208,6 @@ namespace Nu {
 
 	void OpenGLShader::SetIntArray(const std::string& name, int* values, uint32_t count)
 	{
-		NU_PROFILE_FUNCTION();
-
 		UploadUniformIntArray(name, values, count);
 	}
 

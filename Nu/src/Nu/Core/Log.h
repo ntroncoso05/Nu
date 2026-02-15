@@ -6,7 +6,7 @@
 
 namespace Nu {
 
-	class NU_API Log
+	class Log
 	{
 	public:
 		static void Init();

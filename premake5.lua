@@ -1,3 +1,5 @@
+include "./vendor/premake/premake_customization/solution_items.lua"
+
 workspace "Nu"
 	architecture "x86_64"
 	startproject "Nu-Editor" --Not Working
@@ -9,6 +11,11 @@ workspace "Nu"
 		"Dist"
 	}
 
+	solution_items
+	{
+		".editorconfig"
+	}
+
 	flags
 	{
 		"MultiProcessorCompile"
@@ -18,20 +25,21 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Nu/vendor/GLFW/include"
-IncludeDir["Glad"] = "Nu/vendor/Glad/include"
-IncludeDir["ImGui"] = "Nu/vendor/imgui"
-IncludeDir["glm"] = "Nu/vendor/glm"
-IncludeDir["stb_image"] = "Nu/vendor/stb_image"
-IncludeDir["entt"] = "Nu/vendor/entt/include"
+IncludeDir["GLFW"] = "%{wks.location}/Nu/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/Nu/vendor/Glad/include"
+IncludeDir["ImGui"] = "%{wks.location}/Nu/vendor/imgui"
+IncludeDir["glm"] = "%{wks.location}/Nu/vendor/glm"
+IncludeDir["stb_image"] = "%{wks.location}/Nu/vendor/stb_image"
+IncludeDir["entt"] = "%{wks.location}/Nu/vendor/entt/include"
 
 group "Dependencies"
+	include "vendor/premake"
 	include "Nu/vendor/GLFW"
 	include "Nu/vendor/Glad"
 	include "Nu/vendor/ImGui"
 group ""
 
-project "Nu"
+--[[project "Nu"
 	location "Nu"
 	kind "StaticLib"
 	language "C++"
@@ -85,7 +93,7 @@ project "Nu"
 
 		defines
 		{
-			"HZ_PLATFORM_WINDOWS"
+			
 		}
 		
 	filter "configurations:Debug"
@@ -203,3 +211,8 @@ project "Nu-Editor"
 		defines "NU_DIST"
 		runtime "Release"
 		optimize "on"
+]]
+
+include "Nu"
+include "Sandbox"
+include "Nu-Editor"

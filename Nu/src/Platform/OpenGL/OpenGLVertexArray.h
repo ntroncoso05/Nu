@@ -20,6 +20,7 @@ namespace Nu {
 		virtual const Ref<IndexBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
 	private:
 		uint32_t m_RendererID;
+		uint32_t m_VertexBufferIndex = 0;
 		std::vector<Ref<VertexBuffer>> m_VertexBuffers;	// contains references to every vertex buffer, same as OpenGL does internally, it is mimicking or mirroring that on the CPU
 		Ref<IndexBuffer> m_IndexBuffer;					// contains reference to Index buffer, same as OpenGL does internally, it is mimicking or mirroring that on the CPU
 	};

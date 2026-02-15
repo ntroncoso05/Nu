@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nu/Core/Core.h"
+#include <glm/glm.hpp>
 #include "Nu/Core/KeyCodes.h"
 #include "Nu/Core/MouseCodes.h"
 
@@ -12,7 +12,7 @@ namespace Nu {
 		static bool IsKeyPressed(KeyCode keycode);
 
 		static bool IsMouseButtonPressed(MouseCode button);
-		static std::pair<float, float> GetMousePosition();
+		static glm::vec2 GetMousePosition();
 		static float GetMouseX();
 		static float GetMouseY();
 	};
