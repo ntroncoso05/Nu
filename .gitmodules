@@ -14,3 +14,9 @@
 	path = Nu/vendor/glm
 	url = ../../g-truc/glm.git
 	branch = master
+[submodule "Nu/vendor/yaml-cpp"]
+	path = Nu/vendor/yaml-cpp
+	url = https://github.com/thecherno/yaml-cpp
+[submodule "Nu/vendor/ImGuizmo"]
+	path = Nu/vendor/ImGuizmo
+	url = https://github.com/thecherno/imguizmo

@@ -19,7 +19,8 @@ project "Nu-Editor"
 		"%{wks.location}/Nu/src",
 		"%{wks.location}/Nu/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Nu/Core/Core.h"
-#include "Nu/Core/Log.h"
 #include "Nu/Scene/Scene.h"
 #include "Nu/Scene/Entity.h"
 
@@ -16,6 +15,8 @@ namespace Nu {
 		void SetContext(const Ref<Scene>& context);
 
 		void OnImGuiRender();
+
+		Entity GetSelectedEntity() const { return m_SelectionContext; }
 	private:
 		void DrawEntityNode(Entity entity);
 		void DrawComponents(Entity entity);

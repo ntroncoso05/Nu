@@ -7,6 +7,7 @@
 #include "Nu/Core/Application.h"
 #include "Nu/Core/Layer.h" // not need it, to be more clear that it should be accesible by the client(Sandbox) ?
 #include "Nu/Core/Log.h"
+#include "Nu/Core/Assert.h"
 
 #include "Nu/Core/Timestep.h"
 
