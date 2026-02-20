@@ -138,6 +138,9 @@
     <ClInclude Include="src\Nu\Renderer\Camera.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Nu\Renderer\EditorCamera.h">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Nu\Renderer\Framebuffer.h">
       <Filter>src\Nu\Renderer</Filter>
     </ClInclude>
@@ -1509,6 +1512,9 @@
       <Filter>src\Nu\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Buffer.cpp">
+      <Filter>src\Nu\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Nu\Renderer\EditorCamera.cpp">
       <Filter>src\Nu\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Nu\Renderer\Framebuffer.cpp">

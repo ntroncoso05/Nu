@@ -172,6 +172,7 @@
     <ClInclude Include="src\Nu\Math\Math.h" />
     <ClInclude Include="src\Nu\Renderer\Buffer.h" />
     <ClInclude Include="src\Nu\Renderer\Camera.h" />
+    <ClInclude Include="src\Nu\Renderer\EditorCamera.h" />
     <ClInclude Include="src\Nu\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Nu\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Nu\Renderer\OrthographicCamera.h" />
@@ -631,6 +632,7 @@
     <ClCompile Include="src\Nu\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Nu\Math\Math.cpp" />
     <ClCompile Include="src\Nu\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Nu\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Nu\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Nu\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Nu\Renderer\OrthographicCameraController.cpp" />
